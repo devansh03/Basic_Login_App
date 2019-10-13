@@ -6,7 +6,7 @@ class CustomLoginForm extends StatefulWidget {
   _CustomLoginFormState createState() => _CustomLoginFormState();
 }
 
-class _LoginData{
+class _LoginData {
   String name = "";
   String password = "";
 }
@@ -14,7 +14,7 @@ class _LoginData{
 class _CustomLoginFormState extends State<CustomLoginForm> {
   final _formKey = GlobalKey<FormState>();
 
-  _LoginData _data = new _LoginData();
+   _LoginData _data = new _LoginData();
 
 
   @override
@@ -38,22 +38,21 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
             padding: const EdgeInsets.all(10.0),
             child: TextFormField(
               decoration: InputDecoration(
-                labelText: "Name",
-                border: OutlineInputBorder(
-                  gapPadding: 3.3,
-                  borderRadius: BorderRadius.circular(3.3)
-                )
+                  labelText: "Name",
+                  border: OutlineInputBorder(
+                      gapPadding: 3.3,
+                      borderRadius: BorderRadius.circular(3.3)
+                  )
               ),
               // ignore: missing_return
               validator: (value) {
-                if (value.isEmpty){
+                if (value.isEmpty) {
                   return "Please Enter Name";
                 }
                 else {
                   // show something
                   _data.name = value;
                   print("Data Name: ${_data.name}");
-
                 }
               },
             ),
@@ -62,25 +61,25 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextFormField(
-              obscureText: true,
-              decoration: InputDecoration(
-                  labelText: "Password",
-                  border: OutlineInputBorder(
-                      gapPadding: 3.3,
-                      borderRadius: BorderRadius.circular(3.3)
-                  )
-              ),
-              // ignore: missing_return
-              validator: (value) {
-                if (value.isEmpty){
-                  return "Please Enter Password";
+                obscureText: true,
+                decoration: InputDecoration(
+                    labelText: "Password",
+                    border: OutlineInputBorder(
+                        gapPadding: 3.3,
+                        borderRadius: BorderRadius.circular(3.3)
+                    )
+                ),
+                // ignore: missing_return
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return "Please Enter Password";
+                  }
+                  else {
+                    // show something
+                    _data.password = value;
+                    print("Data Password: ${_data.password}");
+                  }
                 }
-                else {
-                  // show something
-                  _data.password = value;
-                  print("Data Password: ${_data.password}");
-                }
-              }
             ),
           ),
           // add buttons
@@ -92,14 +91,15 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: RaisedButton(
-                    onPressed: (){
-                        if (_formKey.currentState.validate()){
-                          setState(() {
-                             _data.name = _data.name;
-                          });
-                          Scaffold.of(context)
-                              .showSnackBar(SnackBar(content: Text("All is very Good")));
-                        }
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        setState(() {
+                          _data.name = _data.name;
+                        });
+                        Scaffold.of(context)
+                            .showSnackBar(SnackBar(content: Text(
+                            "All is very Good")));
+                      }
                     },
                     child: Text("Submit"),
                   ),
@@ -108,15 +108,15 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: RaisedButton(
-                    onPressed: (){
+                    onPressed: () {
                       if (_formKey.currentState.validate()) {
-                          // clear
+                        // clear
                         _formKey.currentState.reset();
                         setState(() {
                           _data.name = "";
                         });
                       }
-                      },
+                    },
                     child: Text("Clear"),
                   ),
                 ),
@@ -125,7 +125,11 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Center(child: _data.name.isEmpty ? Text("") : Text("Hello ${_data.name}",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 24.0,),)),
+            child: Center(child: _data.name.isEmpty ? Text("") : Text(
+              "Hello ${_data.name}", style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: 24.0,),)),
           ),
         ],
 
