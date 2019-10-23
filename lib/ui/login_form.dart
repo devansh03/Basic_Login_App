@@ -27,7 +27,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
           //add image
           Center(
             child: Image.asset(
-              "Images/face.png.png",
+              "Images/face.png",
               width: 90,
               height: 90,
               color: Colors.white,
